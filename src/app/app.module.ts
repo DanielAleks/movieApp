@@ -12,10 +12,12 @@ import { MoviePreviewComponent } from './movie-preview/movie-preview.component';
 import { IndexComponent } from './index/index.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { FetchDataService } from './fetch-data.service';
+import { MovieGenreComponent } from './movie-genre/movie-genre.component';
 
 const routes = [
   { path: '', component: IndexComponent },
   { path: 'movie-preview', component: MoviePreviewComponent },
+  { path: 'movie-genre', component: MovieGenreComponent },
 ];
 
 @NgModule({
@@ -26,6 +28,7 @@ const routes = [
     TopMovieSectionComponent,
     MoviePreviewComponent,
     IndexComponent,
+    MovieGenreComponent,
   ],
   imports: [
     BrowserModule,

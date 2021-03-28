@@ -3,13 +3,13 @@
   <carousel
     *ngIf="trending"
     autoplay="true"
-    interval="50"
-    [pauseOnHover]="false"
+    interval="200"
+    [pauseOnHover]="true"
     [overflowCellsLimit]="3"
     [cellWidth]="300"
-    [cellsToShow]="6"
+    [cellsToShow]="5"
     loop="true"
-    height="400"
+    height="500"
   >
     <div 
       class="carousel-cell sub-image-container"

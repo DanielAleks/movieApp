@@ -20,11 +20,34 @@ export class FetchDataService {
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${this.key}`
     );
   }
-  actionMovies(): Observable<any> {
-    return this.http.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${this.key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28`
+  genreMovies(item: any): Observable<any> {
+    return this.http.get<any>(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${this.key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${item.id}`
     );
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   comedyMovies(): Observable<any> {
     return this.http.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${this.key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=35`

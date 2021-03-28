@@ -17,11 +17,11 @@ export class MovieSectionComponent implements OnInit {
 
   constructor(public fetchService: FetchDataService) {}
 
-  actionMovies() {
-    this.fetchService.actionMovies().subscribe((data) => {
-      this.action = data.results;
-    });
-  }
+  // actionMovies() {
+  //   this.fetchService.genreMovies().subscribe((data) => {
+  //     this.action = data.results;
+  //   });
+  // }
   comedyMovies() {
     this.fetchService.comedyMovies().subscribe((data) => {
       this.comedy = data.results;
@@ -54,7 +54,7 @@ export class MovieSectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.actionMovies();
+    // this.actionMovies();
     this.romanceMovies();
     this.horrorMovies();
     this.fantasyMovies();

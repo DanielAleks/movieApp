@@ -2,7 +2,15 @@
   <p class="logo">
     <a routerLink="/" routerLinkActive="active">Logo</a>
   </p>
-  <p>By:</p>
-  <input class="first-input" type="text" placeholder="genre, year, name" />
-  <input class="second-input" type="text" placeholder="second input" />
+  <div>
+    <button (click)="isModal = !isModal">Genre</button>
+
+    <div class="genre-modal-container" *ngIf="isModal"> 
+      <a routerLink="movie-genre" routerLinkActive="active">
+        <p class="list-name" *ngFor="let list of list">{{ list.name }}</p>
+      </a>
+    </div>
+  </div>
+  <input class="second-input" type="text" placeholder="title" />
+  <input class="second-input" type="text" placeholder="year" />
 </nav>
