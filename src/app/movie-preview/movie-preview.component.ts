@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-top-movie-section',
-  templateUrl: './top-movie-section.component.html',
-  styleUrls: ['./top-movie-section.component.sass'],
+  selector: 'app-movie-preview',
+  templateUrl: './movie-preview.component.html',
+  styleUrls: ['./movie-preview.component.sass'],
 })
-export class TopMovieSectionComponent implements OnInit {
+export class MoviePreviewComponent implements OnInit {
   constructor() {}
 
   imageUrl =

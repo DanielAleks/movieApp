@@ -1,0 +1,24 @@
+<div class="header-image-omni-container">
+  <h1>Trending</h1>
+  <carousel
+    *ngIf="trending"
+    autoplay="true"
+    interval="50"
+    [pauseOnHover]="false"
+    [overflowCellsLimit]="3"
+    [cellWidth]="300"
+    [cellsToShow]="6"
+    loop="true"
+    height="400"
+  >
+    <div 
+      class="carousel-cell sub-image-container"
+      *ngFor="let trending of trending"
+    >
+      <a routerLink="movie-preview" routerLinkActive="active">
+        <img src="https://image.tmdb.org/t/p/w200{{ trending.poster_path }}" />
+      </a>
+    </div>
+  </carousel>
+
+</div>
