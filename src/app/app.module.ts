@@ -12,12 +12,16 @@ import { MoviePreviewComponent } from './movie-preview/movie-preview.component';
 import { IndexComponent } from './index/index.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { FetchDataService } from './fetch-data.service';
-import { MovieGenreComponent } from './movie-genre/movie-genre.component';
+import { MovieSearchGenreComponent } from './index/search/movie-search-genre/movie-search-genre.component';
+import { MovieSearchYearComponent } from './index/search/movie-search-year/movie-search-year.component';
+import { MovieSearchTitleComponent } from './index/search/movie-search-title/movie-search-title.component';
 
 const routes = [
   { path: '', component: IndexComponent },
   { path: 'movie-preview', component: MoviePreviewComponent },
-  { path: 'movie-genre', component: MovieGenreComponent },
+  { path: 'movie-search-genre', component: MovieSearchGenreComponent },
+  { path: 'movie-search-year', component: MovieSearchYearComponent },
+  { path: 'movie-search-title', component: MovieSearchTitleComponent },
 ];
 
 @NgModule({
@@ -27,8 +31,10 @@ const routes = [
     MovieSectionComponent,
     TopMovieSectionComponent,
     MoviePreviewComponent,
-    IndexComponent,
-    MovieGenreComponent,
+    IndexComponent, 
+    MovieSearchGenreComponent,
+    MovieSearchYearComponent,
+    MovieSearchTitleComponent,
   ],
   imports: [
     BrowserModule,

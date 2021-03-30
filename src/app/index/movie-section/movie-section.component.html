@@ -1,28 +1,14 @@
-<div class="margin-top">
-  <h1 class="genre-header">Action</h1>
-  <div class="sub-image-omni-container">
-    <carousel
-      *ngIf="action"
-      autoplay="true"
-      interval="50"
-      [pauseOnHover]="true"
-      [overflowCellsLimit]="3"
-      [cellWidth]="300"
-      [cellsToShow]="6"
-      loop="true"
-      height="450"
-    >
-      <div
-        class="carousel-cell sub-image-container"
-        *ngFor="let action of action"
-      >
-        <a routerLink="movie-preview" routerLinkActive="active">
-          <img src="https://image.tmdb.org/t/p/w200{{ action.poster_path }}" />
-        </a>
-      </div>
-    </carousel>
+<div *ngFor="let list of list" class="margin-top">
+  <h1 class="genre-header">{{ list.name }}</h1>
+  <div class="sub-image-omni-container" *ngIf="genre">
+    <div class="carousel-cell sub-image-container" *ngFor="let genre of genre.results">
+      <a routerLink="movie-preview" routerLinkActive="active">
+        <img src="https://image.tmdb.org/t/p/w200{{ genre.poster_path }}" />
+        <!-- <p>{{genre.overview}}</p> -->
+      </a>
+    </div>
   </div>
-  <h1 class="genre-header">Comedy</h1>
+  <!-- <h1 class="genre-header">Comedy</h1>
   <div class="sub-image-omni-container">
     <carousel
       *ngIf="comedy"
@@ -159,5 +145,5 @@
         </a>
       </div>
     </carousel>
-  </div>
+  </div> -->
 </div>

@@ -1,0 +1,18 @@
+<div *ngIf="yearMovie">
+
+  <img
+    class="year-movie-image"
+    *ngFor="let yearMovie of yearMovie"
+    src="https://image.tmdb.org/t/p/w200{{ yearMovie.poster_path }}"
+    alt="image"
+  /> 
+  <!-- <div style="display: flex; font-size: 2rem;" *ngFor='let allYears of allYears; let i = index'>
+    <p (click)='yearHandler(allYears)'>{{allYears}}</p>
+  </div> -->
+  <button (click)="previousHandler()">
+    Previous
+  </button>
+  <button (click)="nextHandler()">
+    Next
+  </button>
+</div>

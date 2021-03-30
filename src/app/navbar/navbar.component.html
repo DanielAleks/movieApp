@@ -3,14 +3,29 @@
     <a routerLink="/" routerLinkActive="active">Logo</a>
   </p>
   <div>
-    <button (click)="isModal = !isModal">Genre</button>
-
-    <div class="genre-modal-container" *ngIf="isModal"> 
-      <a routerLink="movie-genre" routerLinkActive="active">
-        <p class="list-name" *ngFor="let list of list">{{ list.name }}</p>
-      </a>
-    </div>
+    <button (click)="isGenreModal = !isGenreModal">Genre</button>
+      <div class="genre-modal-container" *ngIf="isGenreModal">
+        <a
+          *ngFor="let genreList of genreList"
+          routerLink="movie-search-genre"
+          routerLinkActive="active"
+        >
+          <p class="list-name">{{ genreList.name }}</p>
+        </a>
+      </div>
   </div>
+
+  <button (click)='isYearModal = !isYearModal'>Year</button>
+  <div class="genre-modal-container" *ngIf="isYearModal">
+    <a
+      *ngFor="let allYears of allYears"
+      routerLink="movie-search-year"
+      routerLinkActive="active"
+    >
+      <p (click)='yearClickHandler(allYears)' class="list-name">{{ allYears }}</p>
+    </a>
+  </div>
+
+
   <input class="second-input" type="text" placeholder="title" />
-  <input class="second-input" type="text" placeholder="year" />
 </nav>

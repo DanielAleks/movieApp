@@ -7,30 +7,10 @@ import { FetchDataService } from '../fetch-data.service';
   styleUrls: ['./navbar.component.sass'],
 })
 export class NavbarComponent implements OnInit {
-  //   genres = [
-  //     {'Action', actionGenre},
-  //     {'Adventure', actionGenre},
-  //     {'Anumation', actionGenre},
-  //     {'Comedy', actionGenre},
-  //     {'Crime', actionGenre},
-  //     {'Documentary', actionGenre},
-  //     {'Drama', actionGenre},
-  //     {'Family', actionGenre},
-  //     {'Fantasy', actionGenre},
-  //     {'History', actionGenre},
-  //     {'Horror', actionGenre},
-  //     {'Musicals', actionGenre},
-  //     {'Mystery', actionGenre},
-  //     {'Romance', actionGenre},
-  //     '{Sci-fi', actionGenre},
-  //     {'Thriller', actionGenre},
-  //     {'War', actionGenre},
-  //     {'Western', actionGenre},
-  // ];
+  isGenreModal = false;
+  isYearModal = false;
 
-  isModal = true;
-
-  list = [
+  genreList = [
     { id: 0, name: 'Action' },
     { id: 12, name: 'Adventure' },
     { id: 16, name: 'Animation' },
@@ -48,22 +28,45 @@ export class NavbarComponent implements OnInit {
     { id: 878, name: 'Science Fiction' },
     { id: 10770, name: 'TV Movie' },
     { id: 53, name: 'Thriller' },
-    { id: 10752, name: 'War' }, 
+    { id: 10752, name: 'War' },
     { id: 37, name: 'Western' },
   ];
 
+  allYears = [
+    2021,
+    2020,
+    2019,
+    2018,
+    2017,
+    2016,
+    2015,
+    2014,
+    2013,
+    2012,
+    2011,
+    2010,
+  ];
+  year = 2021;
   action;
+  yearMovie;
+  pageAccessor = 1;
 
   constructor(private fetchService: FetchDataService) {}
 
-  // genreMovies() {
-  //   this.fetchService
-  //     .actionMovies()
-  //     .subscribe((data) => (this.action = data.genres));
-  // }
+  yearClickHandler(allYears) {
+    this.year = allYears;
+    this.getYearMovies();
+  }
+
+  getYearMovies() {
+    this.fetchService
+      .searchByYear(this.pageAccessor, this.year)
+      .subscribe((data) => {
+        this.yearMovie = data.results;
+        console.log(data, 'YearlyData, HoldICECREAM');
+      });
+  }
   ngOnInit(): void {
-    this.list.map((item) => {
-      this.fetchService.genreMovies(item);
-    });
+    this.getYearMovies();
   }
 }
