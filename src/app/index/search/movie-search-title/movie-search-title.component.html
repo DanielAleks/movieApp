@@ -1,1 +1,14 @@
-<p>movie-search-title works!</p>
+<div>
+  <div *ngIf="title">
+    <img
+      *ngFor="let title of title"
+      src="https://image.tmdb.org/t/p/w200{{ title.poster_path }}"
+      alt="image"
+    />
+  </div>
+
+  <button (click)="previousHandler()">Previous</button>
+  <button (click)="nextHandler()">Next</button>
+  <input type="text" [(ngModel)]="query" />
+  <button (click)='submitHandler()' >submit</button>
+</div>

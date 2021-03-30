@@ -7,10 +7,10 @@ import { FetchDataService } from 'src/app/fetch-data.service';
   styleUrls: ['./movie-search-year.component.sass'],
 })
 export class MovieSearchYearComponent implements OnInit {
-  @Input() year;
-  @Input() getYearMovies;
-  @Input() yearMovie;
-  @Input() pageAccessor;
+  @Input() year?;
+  @Input() getYearMovies?;
+  @Input() yearMovie?;
+  @Input() pageAccessor?;
 
   constructor(private fetchService: FetchDataService) {}
 

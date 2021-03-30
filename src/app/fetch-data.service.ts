@@ -15,7 +15,7 @@ export class FetchDataService {
     );
   }
   genreList(): Observable<any> {
-    return this.http.get( 
+    return this.http.get(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${this.key}`
     );
   }
@@ -27,6 +27,11 @@ export class FetchDataService {
   searchByYear(pageAccessor: number, year: number): Observable<any> {
     return this.http.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${this.key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageAccessor}&year=${year}`
+    );
+  }
+  searchByTitle(query: any, pageAccessor: number): Observable<any> {
+    return this.http.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${this.key}&language=en-US&query=${query}&page=${pageAccessor}&include_adult=false`
     );
   }
 }

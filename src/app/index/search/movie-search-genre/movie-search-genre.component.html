@@ -1,3 +1,13 @@
-<div class="genre-search-container" *ngFor='let movieInGenre of movieInGenre' > 
-  <img src="https://image.tmdb.org/t/p/w200{{movieInGenre.poster_path}}" alt="image">
+<div class="genre-search-container">
+  <div *ngIf="movieInGenre">
+    <img
+      src="https://image.tmdb.org/t/p/w200{{ movieInGenre.poster_path }}"
+      alt="image"
+      *ngFor="let movieInGenre of movieInGenre"
+    />
+  </div>
+
+  <div *ngFor="let genreList of genreList">
+    <p (click)="changeGenreHandler(genreList)" style="font-size: x-large">{{ genreList.name }}</p>
+  </div>
 </div>

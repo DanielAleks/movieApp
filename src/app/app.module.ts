@@ -15,6 +15,7 @@ import { FetchDataService } from './fetch-data.service';
 import { MovieSearchGenreComponent } from './index/search/movie-search-genre/movie-search-genre.component';
 import { MovieSearchYearComponent } from './index/search/movie-search-year/movie-search-year.component';
 import { MovieSearchTitleComponent } from './index/search/movie-search-title/movie-search-title.component';
+import { FormsModule } from '@angular/forms';
 
 const routes = [
   { path: '', component: IndexComponent },
@@ -38,6 +39,7 @@ const routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(routes),

@@ -7,18 +7,26 @@
     [pauseOnHover]="true"
     [overflowCellsLimit]="3"
     [cellWidth]="300"
-    [cellsToShow]="5"
     loop="true"
     height="500"
   >
-    <div 
+    <div
       class="carousel-cell sub-image-container"
-      *ngFor="let trending of trending"
+      *ngFor="let trending of trending; let index = index"
     >
-      <a routerLink="movie-preview" routerLinkActive="active">
+      <!-- routerLink="movie-preview" routerLinkActive="active" -->
+      <a (click)="accessorHandler(id)">
         <img src="https://image.tmdb.org/t/p/w200{{ trending.poster_path }}" />
       </a>
     </div>
   </carousel>
 
+  <div>
+    <img style="height: 100px; width: 100px" src="https://image.tmdb.org/t/p/w200{{ trending[accessor].backdrop_path }}" />
+    <img style="height: 100px; width: 100px" src="https://image.tmdb.org/t/p/w200{{ trending[accessor].poster_path }}" />
+    <p>{{ trending[accessor].overview }}</p>
+    <p>{{ trending[accessor].release_date }}</p>
+    <p>{{ trending[accessor].title }}</p>
+    <p>{{ trending[accessor].vote_average }}</p>
+  </div>
 </div>
