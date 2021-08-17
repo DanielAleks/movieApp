@@ -1,0 +1,38 @@
+<div class="preview-container">
+  <div class="backdrop-container">
+    <div class="left-gradient"></div>
+    <img
+      class="backdrop-image"
+      src="https://image.tmdb.org/t/p/w500{{ movie[0].backdrop_path }}"
+      alt="image"
+    />
+    <div class="right-gradient"></div>
+  </div>
+
+  <div class="movie-details-container">
+    <div class="top-info">
+      <p class="title">{{ movie[0].title }}</p>
+      <p class="release">{{ movie[0].release_date }}</p>
+      <p class="splitter">|</p>
+      <p class="rating">Rating: {{ movie[0].vote_average }}</p>
+    </div>
+
+    <div class="forNow">
+      <img
+        class="poster-image"
+        src="https://image.tmdb.org/t/p/w200{{ movie[4].poster_path }}"
+      />
+
+      <div class="bottom-info">
+        <div class="desc-container">
+          <p class="desc-header">Description</p>
+          <p class="overview">{{ movie[0].overview }}</p>
+        </div>
+        <div class="genres-container">
+          <p class="genres-header">Genres</p>
+          <p class="genres">{{ movie[0].genre_ids }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

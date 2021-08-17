@@ -1,14 +1,38 @@
-<div *ngFor="let list of list" class="margin-top">
-  <h1 class="genre-header">{{ list.name }}</h1>
+<div class="margin-top">
+  <!-- <h1 class="genre-header">{{ list.name }}</h1>
   <div class="sub-image-omni-container" *ngIf="genre">
     <div class="carousel-cell sub-image-container" *ngFor="let genre of genre.results">
       <a routerLink="movie-preview" routerLinkActive="active">
         <img src="https://image.tmdb.org/t/p/w200{{ genre.poster_path }}" />
-        <!-- <p>{{genre.overview}}</p> -->
+        <p>{{genre.overview}}</p>
       </a>
     </div>
+  </div> -->
+  <h1 class="genre-header">Action</h1>
+  <div class="sub-image-omni-container">
+    <carousel
+      *ngIf="comedy"
+      autoplay="true"
+      interval="50"
+      [pauseOnHover]="false"
+      [overflowCellsLimit]="3"
+      [cellWidth]="300"
+      [cellsToShow]="6"
+      loop="true"
+      height="450"
+    >
+      <div
+        class="carousel-cell sub-image-container"
+        *ngFor="let action of action"
+      >
+        <a routerLink="movie-preview" routerLinkActive="active">
+          <img src="https://image.tmdb.org/t/p/w200{{ action.poster_path }}" />
+          <p>{{ action.overview }}</p>
+        </a>
+      </div>
+    </carousel>
   </div>
-  <!-- <h1 class="genre-header">Comedy</h1>
+  <h1 class="genre-header">Comedy</h1>
   <div class="sub-image-omni-container">
     <carousel
       *ngIf="comedy"
@@ -27,6 +51,7 @@
       >
         <a routerLink="movie-preview" routerLinkActive="active">
           <img src="https://image.tmdb.org/t/p/w200{{ comedy.poster_path }}" />
+          <p>{{ comedy.overview }}</p>
         </a>
       </div>
     </carousel>
@@ -54,6 +79,7 @@
       </div>
     </carousel>
   </div>
+  <!-- !!!!!!!!family not working -->
   <h1 class="genre-header">Family</h1>
   <div class="sub-image-omni-container">
     <carousel
@@ -100,6 +126,7 @@
       </div>
     </carousel>
   </div>
+  <!-- !!!!!!!!horror only one displaying -->
   <h1 class="genre-header">Horror</h1>
   <div class="sub-image-omni-container">
     <carousel
@@ -138,12 +165,19 @@
     >
       <div
         class="carousel-cell sub-image-container"
-        *ngFor="let romance of romance"
+        *ngFor="let romance of romance; let id = index"
       >
-        <a routerLink="movie-preview" routerLinkActive="active">
+        <a onclick="setMoviePreview(id)" routerLink="movie-preview" routerLinkActive="active">
           <img src="https://image.tmdb.org/t/p/w200{{ romance.poster_path }}" />
         </a>
       </div>
     </carousel>
-  </div> -->
+  </div>
+
+  <!-- <h1>value is this:{{ count }}</h1> -->
+
+  <button (click)="increment()">Increment</button>
+  <div>Current Count: {{ count$ | async }}</div>
+  <button (click)="decrement()">Decrement</button>
+  <button (click)="reset()">Reset Counter</button>
 </div>

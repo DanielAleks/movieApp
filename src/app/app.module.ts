@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MovieSectionComponent } from './index/movie-section/movie-section.component';
 import { TopMovieSectionComponent } from './index/top-movie-section/top-movie-section.component';
-import { MoviePreviewComponent } from './movie-preview/movie-preview.component';
 import { IndexComponent } from './index/index.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { FetchDataService } from './fetch-data.service';
@@ -16,6 +15,9 @@ import { MovieSearchGenreComponent } from './index/search/movie-search-genre/mov
 import { MovieSearchYearComponent } from './index/search/movie-search-year/movie-search-year.component';
 import { MovieSearchTitleComponent } from './index/search/movie-search-title/movie-search-title.component';
 import { FormsModule } from '@angular/forms';
+import { MoviePreviewComponent } from './index/movie-preview/movie-preview.component';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './app.reducer';
 
 const routes = [
   { path: '', component: IndexComponent },
@@ -32,7 +34,7 @@ const routes = [
     MovieSectionComponent,
     TopMovieSectionComponent,
     MoviePreviewComponent,
-    IndexComponent, 
+    IndexComponent,
     MovieSearchGenreComponent,
     MovieSearchYearComponent,
     MovieSearchTitleComponent,
@@ -44,6 +46,7 @@ const routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     IvyCarouselModule,
+    StoreModule.forRoot({ count: counterReducer }),
   ],
   exports: [RouterModule],
 

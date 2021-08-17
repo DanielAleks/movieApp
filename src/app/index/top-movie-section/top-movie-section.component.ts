@@ -9,7 +9,8 @@ import { FetchDataService } from 'src/app/fetch-data.service';
 export class TopMovieSectionComponent implements OnInit {
   trending;
   genres;
-  accessor = 1
+  accessor = 0;
+
   constructor(private fetchService: FetchDataService) {}
 
   trendingMovies() {
@@ -26,8 +27,7 @@ export class TopMovieSectionComponent implements OnInit {
   }
 
   accessorHandler(index) {
-    this.accessor = index
-    this.trendingMovies()
+    this.accessor = index;
   }
 
   ngOnInit(): void {

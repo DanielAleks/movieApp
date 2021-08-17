@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FetchDataService } from 'src/app/fetch-data.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { increment, decrement, reset, movieId } from '../../app.actions';
 
 @Component({
   selector: 'app-movie-section',
@@ -7,74 +10,83 @@ import { FetchDataService } from 'src/app/fetch-data.service';
   styleUrls: ['./movie-section.component.sass'],
 })
 export class MovieSectionComponent implements OnInit {
-  // comedy;
-  // drama;
-  // family;
-  // fantasy;
-  // horror;
-  // romance;
+  count$: Observable<number>;
+
+  action;
+  comedy;
+  drama;
+  horror;
+  romance;
+  fantasy;
+  family;
   genre;
 
-  list = [
-    { name: 'Action', id: 28 },
-    { name: 'Comedy', id: 35 },
-    { name: 'Drama', id: 18 },
-    { name: 'Horror', id: 27 },
-    { name: 'Romance', id: 10749 },
-    { name: 'Fantasy', id: 14 },
-    { name: 'Family', id: 10751 },
-  ];
+  constructor(
+    public fetchService: FetchDataService,
+    private store: Store<{ count: number }>
+  ) {
+    this.count$ = store.select('count');
+  }
 
-  constructor(public fetchService: FetchDataService) {}
+  increment() {
+    this.store.dispatch(increment());
+  }
+  decrement() {
+    this.store.dispatch(decrement());
+  }
+  reset() {
+    this.store.dispatch(reset());
+  }
 
-  getMoviesByGenre() {
-    this.list.map((item) => {
-      this.fetchService.genreMovies(item).subscribe((data) => {
-        this.genre = data;
-        console.log(data, 'GenreMovies, !!!!!!');
-      });
+  setMoviePreview({id}) {
+    // this.store.dispatch(movieId())
+  }
+
+  actionMovies() {
+    this.fetchService.genreMovies(28).subscribe((data) => { 
+      this.action = data.results;
+      console.log(data, 'hello this is THE ACTION MOVIES')
+    });
+  }
+  comedyMovies() {
+    this.fetchService.genreMovies(35).subscribe((data) => {
+      this.comedy = data.results;
+    });
+  }
+  dramaMovies() {
+    this.fetchService.genreMovies(18).subscribe((data) => {
+      this.drama = data.results;
+    });
+  }
+  familyMovies() {
+    this.fetchService.genreMovies(10751).subscribe((data) => {
+      this.horror = data.results;
+    });
+  }
+  fantasyMovies() {
+    this.fetchService.genreMovies(14).subscribe((data) => {
+      this.fantasy = data.results;
+    });
+  }
+  horrorMovies() {
+    this.fetchService.genreMovies(27).subscribe((data) => {
+      this.horror = data.results;
+      console.log(this.horror, 'popp');
+    });
+  }
+  romanceMovies() {
+    this.fetchService.genreMovies(10749).subscribe((data) => {
+      this.romance = data.results;
     });
   }
 
   ngOnInit(): void {
-    this.getMoviesByGenre();
+    this.actionMovies();
+    this.romanceMovies();
+    this.horrorMovies();
+    this.fantasyMovies();
+    this.familyMovies();
+    this.dramaMovies();
+    this.comedyMovies();
   }
 }
-
-// this.romanceMovies();
-// this.horrorMovies();
-// this.fantasyMovies();
-// this.familyMovies();
-// this.dramaMovies();
-// this.comedyMovies();
-
-// comedyMovies() {
-//   this.fetchService.comedyMovies().subscribe((data) => {
-//     this.comedy = data.results;
-//   });
-// }
-// dramaMovies() {
-//   this.fetchService.dramaMovies().subscribe((data) => {
-//     this.drama = data.results;
-//   });
-// }
-// familyMovies() {
-//   this.fetchService.familyMovies().subscribe((data) => {
-//     this.family = data.results;
-//   });
-// }
-// fantasyMovies() {
-//   this.fetchService.fantasyMovies().subscribe((data) => {
-//     this.fantasy = data.results;
-//   });
-// }
-// horrorMovies() {
-//   this.fetchService.horrorMovies().subscribe((data) => {
-//     this.horror = data.results;
-//   });
-// }
-// romanceMovies() {
-//   this.fetchService.romanceMovies().subscribe((data) => {
-//     this.romance = data.results;
-//   });
-// }
